@@ -1,0 +1,12 @@
+.drageble-component {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.drageble-component_old-copy {
+  opacity: 10%;
+  position: absolute;
+  z-index: 5;
+}

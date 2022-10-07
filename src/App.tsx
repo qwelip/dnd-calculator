@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Item from './components/Drag Items/Item';
+import InitialContainer from './components/InitialContainer/InitialContainer';
+import TargetContainer from './components/TargetContainer/TargetContainer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="app">
+        <InitialContainer>
+          <Item bgColor='crimson'/>
+          <Item bgColor='darkseagreen'/>
+        </InitialContainer>
+
+        <TargetContainer>
+        </TargetContainer>
+      </div>
+    </>
   );
 }
 

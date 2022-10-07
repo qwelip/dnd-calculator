@@ -1,0 +1,7 @@
+.initial-container {
+  border: solid 4px rgb(174, 174, 174);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -1,9 +1,0 @@
-.drag-and-drop-item {
-  position: absolute;
-  z-index: 100;
-  box-shadow: 5px 4px 72px 0px rgba(34, 60, 80, 0.5);
-}
-
-.original-item {
-  z-index: 5;
-}

@@ -7,11 +7,21 @@ interface IProps {
 
 const TargetContainer: React.FC<IProps> = ({children}) => {
 
-  
+  const handleDragOver: React.DragEventHandler<HTMLDivElement> = (e) => {
+    e.preventDefault()
+    console.log('handleDragOver')
+  }
+
+  const handleDrop: React.DragEventHandler<HTMLDivElement> = (e) => {
+    e.preventDefault()
+    console.log('handleDrop')
+  }
 
   return (
     <div 
       className='target-container'
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
     >
       {children}
     </div>

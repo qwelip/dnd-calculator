@@ -3,4 +3,6 @@
   justify-content: space-between;
   margin: 190px auto;
   max-width: 800px;
+  border: 1px solid black;
+  padding: 40px;
 }

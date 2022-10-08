@@ -6,8 +6,13 @@ interface IProps {
 }
 
 const TargetContainer: React.FC<IProps> = ({children}) => {
+
+  
+
   return (
-    <div className='target-container'>
+    <div 
+      className='target-container'
+    >
       {children}
     </div>
   );

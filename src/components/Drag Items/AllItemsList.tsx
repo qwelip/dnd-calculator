@@ -1,26 +1,23 @@
-import Item from "./Item";
+import ItemCrimson from "./ItemCrimson";
+import ItemDarkseagreen from "./ItemDarkseagreen";
 
 type colors = 'crimson' | 'darkseagreen'
 
-interface IProps {
-  bgColor: colors
-}
-
-interface IItem {
+export interface IItem {
   id: number
-  component: React.FC<IProps>
-  bgColor: colors
+  component: React.FC
+  bgColor?: colors
 }
 
 export const allItems: IItem[] = [
   {
     id: 1,
-    component: Item,
+    component: ItemCrimson,
     bgColor: 'crimson',
   },
   {
     id: 2,
-    component: Item,
+    component: ItemDarkseagreen,
     bgColor: 'darkseagreen',
   }
 ]

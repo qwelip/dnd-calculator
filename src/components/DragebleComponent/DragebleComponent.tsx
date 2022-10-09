@@ -4,12 +4,13 @@ import './DragebleComponent.css'
 interface IProps {
   children?: React.ReactNode
   id: number
+  handleAssign: (id: number) => void
 }
 
-const DragebleComponent: React.FC<IProps> = ({children, id}) => {
+const DragebleComponent: React.FC<IProps> = ({children, id, handleAssign}) => {
 
   const handleDragStart = () => {
-    console.log('handleDragStart', id)
+    handleAssign(id)
   }
 
   return (

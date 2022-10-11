@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
 import './App.css'
 import { allItems } from './components/Drag Items/AllItemsList';
-import Item from './components/Drag Items/ItemCrimson';
-import DragebleComponent from './components/DragebleComponent/DragebleComponent';
+import DraggableComponent from './components/DraggableComponent/DraggableComponent';
 import InitialContainer from './components/InitialContainer/InitialContainer';
 import TargetContainer from './components/TargetContainer/TargetContainer';
 
 
 export function App() {
+  const [idOfDraggingItem, setIdOfDraggingItem] = useState<number>()
+  const [draggedItems, setDraggedItems] = useState<number[]>([] as number[])
 
-  const [selectedItem, setSelectedItem] = useState<number>()
-
-  const assignItem = (id: number): void => {
-    setSelectedItem(id)
+  const setId = (id: number): void => {
+    setIdOfDraggingItem(id)
+  }
+  const addDraggedItem = (id: number) => {
+    setDraggedItems((prev) => {
+      const arr = [...prev]
+      arr.push(id)
+      return arr
+    })
+  }
+  const deleteDraggedItem = (id: number) => {
+    setDraggedItems((prev) => {
+      const arr = [...prev].filter(num => num !== id)
+      return arr
+    })
   }
 
   return (
@@ -24,20 +36,24 @@ export function App() {
           allItems.map(item => {
             const Component = item.component
             return (
-              <DragebleComponent 
+              <DraggableComponent 
                 key={item.id} 
                 id={item.id}
-                handleAssign={assignItem}
+                setId={setId}
+                draggedItems={draggedItems}
               >
                 <Component/>
-              </DragebleComponent>
+              </DraggableComponent>
             )
           })
         }
       </InitialContainer>
 
       <TargetContainer
-        selectedItem={selectedItem}
+        idOfDraggingItem={idOfDraggingItem}
+        draggedItems={draggedItems}
+        addDraggedItem={addDraggedItem}
+        deleteDraggedItem={deleteDraggedItem}
       />
     </div>
   );

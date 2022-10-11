@@ -1,0 +1,21 @@
+.dragged-component {
+  position: relative;
+}
+
+.dragged-component__btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 15px;
+  background-color: cornflowerblue;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  border: none;
+  opacity: 0%;
+  cursor: pointer;
+}
+
+.dragged-component:hover .dragged-component__btn {
+  opacity: 100%;
+}

@@ -1,36 +1,41 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { allItems } from '../Drag Items/AllItemsList';
+import DraggedComponent from '../DraggedComponent/DraggedComponent';
 import './TargetContainer.css'
 
 interface IProps {
-  selectedItem: number | undefined
+  idOfDraggingItem: number | undefined
+  draggedItems: number[]
+  addDraggedItem: (id: number) => void
+  deleteDraggedItem: (id: number) => void
 }
 
-const TargetContainer: React.FC<IProps> = ({selectedItem}) => {
-
-  const [draggedItems, setDraggetItems] = useState<number[]>([] as number[])
+const TargetContainer: React.FC<IProps> = ({idOfDraggingItem, draggedItems, addDraggedItem, deleteDraggedItem}) => {
 
   const handleDragOver: React.DragEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
   }
 
-  const renderList = () => {
+  const renderItems = () => {
     return draggedItems.map((id) => {
-       const obj = allItems.find(item => item.id === id)
-       const Component = obj!.component
+       const item = allItems.find(item => item.id === id)
+       const Component = item!.component
        const randomKey = Math.random()
-       return <Component key={randomKey}/>
+       return (
+        <DraggedComponent 
+          key={randomKey}
+          id={id}
+          onDelete={deleteDraggedItem}
+        >
+          <Component/>
+        </DraggedComponent>
+       ) 
     })
   }
   
-  
   const handleDrop: React.DragEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
-    setDraggetItems(prev => {
-      const arr = [...prev]
-      arr.push(selectedItem!)
-      return arr
-    })
+    addDraggedItem(idOfDraggingItem!)
   }
 
   return (
@@ -39,11 +44,7 @@ const TargetContainer: React.FC<IProps> = ({selectedItem}) => {
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      <>
-        {
-          renderList()
-        }
-      </>
+      {renderItems()}
     </div>
   );
 };

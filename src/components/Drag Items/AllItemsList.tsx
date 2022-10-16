@@ -1,7 +1,8 @@
+import ItemBlue from "./ItemBlue";
 import ItemCrimson from "./ItemCrimson";
 import ItemDarkseagreen from "./ItemDarkseagreen";
 
-type colors = 'crimson' | 'darkseagreen'
+type colors = 'crimson' | 'darkseagreen' | 'blue'
 
 export interface IItem {
   id: number
@@ -19,5 +20,10 @@ export const allItems: IItem[] = [
     id: 2,
     component: ItemDarkseagreen,
     bgColor: 'darkseagreen',
+  },
+  {
+    id: 3,
+    component: ItemBlue,
+    bgColor: 'blue',
   }
 ]

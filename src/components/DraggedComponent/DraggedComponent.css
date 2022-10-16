@@ -1,5 +1,6 @@
 .dragged-component {
   position: relative;
+  display: flex;
 }
 
 .dragged-component__btn {
@@ -18,4 +19,8 @@
 
 .dragged-component:hover .dragged-component__btn {
   opacity: 100%;
+}
+
+.drag-marker {
+  position: absolute;
 }

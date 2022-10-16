@@ -1,11 +1,12 @@
 .draggable-component {
   position: relative;
+  display: flex;
 }
 
 .draggable-component_inactive {
   position: absolute;
   top: 0;
-  bottom: 4px;
+  bottom: 0;
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.3);

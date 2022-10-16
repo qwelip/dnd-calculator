@@ -6,11 +6,12 @@ import './TargetContainer.css'
 interface IProps {
   idOfDraggingItem: number | undefined
   draggedItems: number[]
-  addDraggedItem: (id: number) => void
+  addDraggedItemToContainer: (id: number) => void
   deleteDraggedItem: (id: number) => void
+  setPlaceToAddItem: (id: number, top: boolean) => void
 }
 
-const TargetContainer: React.FC<IProps> = ({idOfDraggingItem, draggedItems, addDraggedItem, deleteDraggedItem}) => {
+const TargetContainer: React.FC<IProps> = ({idOfDraggingItem, draggedItems, addDraggedItemToContainer, deleteDraggedItem, setPlaceToAddItem}) => {
 
   const handleDragOver: React.DragEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
@@ -26,6 +27,7 @@ const TargetContainer: React.FC<IProps> = ({idOfDraggingItem, draggedItems, addD
           key={randomKey}
           id={id}
           onDelete={deleteDraggedItem}
+          setPlaceToAddItem={setPlaceToAddItem}
         >
           <Component/>
         </DraggedComponent>
@@ -35,7 +37,7 @@ const TargetContainer: React.FC<IProps> = ({idOfDraggingItem, draggedItems, addD
   
   const handleDrop: React.DragEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
-    addDraggedItem(idOfDraggingItem!)
+    addDraggedItemToContainer(idOfDraggingItem!)
   }
 
   return (

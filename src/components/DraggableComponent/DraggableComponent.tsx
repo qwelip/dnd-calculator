@@ -11,17 +11,14 @@ interface IProps {
 
 const DraggableComponent: React.FC<IProps> = ({children, id, draggedItems, setId}) => {
 
-  
-  const isComponentDragged = (): boolean => {
-    return draggedItems.includes(id)
-  }
+  const isItemDragged = draggedItems.length > 0 && draggedItems.includes(id)
   
   const handleDragStart = () => {
-    setId(id)
+      setId(id)
   }
   
   const componentStyle = {
-    cursor: isComponentDragged() ? 'not-allowed' : 'grab',
+    cursor: isItemDragged ? 'not-allowed' : 'grab',
   } 
 
   return (
@@ -29,11 +26,11 @@ const DraggableComponent: React.FC<IProps> = ({children, id, draggedItems, setId
       <div 
         className='draggable-component'
         style={componentStyle}
-        draggable={isComponentDragged() ? false : true}  
+        draggable={isItemDragged ? false : true}  
         onDragStart={handleDragStart}
       >
         {
-          isComponentDragged() &&
+          isItemDragged &&
           <div className='draggable-component_inactive'></div>
         }
         {children}

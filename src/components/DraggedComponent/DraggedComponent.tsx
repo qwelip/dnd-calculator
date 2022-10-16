@@ -24,11 +24,7 @@ const DraggedComponent:React.FC<IProps> = ({children, id, onDelete, setPlaceToAd
   }
 
   const handleDragEnter = () => {
-    setIsMarkerShow((prev) => !prev)
-  }
-  
-  const handleDragEnterMarker: React.DragEventHandler<HTMLDivElement> = (e) => {
-    e.stopPropagation()
+    setIsMarkerShow(true)
   }
 
   const handleDragOver: React.DragEventHandler<HTMLDivElement> = (e) => {
@@ -72,7 +68,6 @@ const DraggedComponent:React.FC<IProps> = ({children, id, onDelete, setPlaceToAd
     >
       <div 
         className='drag-marker'
-        onDragEnter={handleDragEnterMarker}
         style={markerStyles}
       ></div>
       <button 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css'
 import { allItems } from './components/Drag Items/AllItemsList';
 import DraggableComponent from './components/DraggableComponent/DraggableComponent';
+import DraggedComponent from './components/DraggedComponent/DraggedComponent';
 import InitialContainer from './components/InitialContainer/InitialContainer';
 import TargetContainer from './components/TargetContainer/TargetContainer';
 
@@ -15,7 +16,9 @@ export function App() {
   const [draggedItems, setDraggedItems] = useState<number[]>([] as number[])
   const [whereToAddNewItem, setWhereToAddNewItem] = useState<INewItem>()
 
-  const setId = (id: number): void => {
+  const isItemDouble = draggedItems.includes(idOfDraggingItem!)
+
+  const getIdOfDraggingItem = (id: number): void => {
     setIdOfDraggingItem(id)
   }
   const addDraggedItemToItem = (id: number) => {
@@ -32,8 +35,6 @@ export function App() {
       return arr
     })
   }
-
-  const isItemDouble = draggedItems.includes(idOfDraggingItem!)
 
   const addDraggedItemToContainer = (id: number) => {
     if (isItemDouble) return
@@ -58,6 +59,7 @@ export function App() {
     if (whereToAddNewItem) {
       addDraggedItemToItem(idOfDraggingItem!)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [whereToAddNewItem])
 
   return (
@@ -72,7 +74,7 @@ export function App() {
               <DraggableComponent 
                 key={item.id} 
                 id={item.id}
-                setId={setId}
+                getIdOfDraggingItem={getIdOfDraggingItem}
                 draggedItems={draggedItems}
               >
                 <Component/>
@@ -83,12 +85,28 @@ export function App() {
       </InitialContainer>
 
       <TargetContainer
-        idOfDraggingItem={idOfDraggingItem}
-        draggedItems={draggedItems}
+        idOfDraggingItem={idOfDraggingItem!}
         addDraggedItemToContainer={addDraggedItemToContainer}
-        deleteDraggedItem={deleteDraggedItem}
-        setPlaceToAddItem={setPlaceToAddItem}
-      />
+      >
+      {  
+        draggedItems.map((id) => {
+        const item = allItems.find(item => item.id === id)
+        const Component = item!.component
+        const randomKey = Math.random()
+
+        return (
+          <DraggedComponent 
+            key={randomKey}
+            id={id}
+            onDelete={deleteDraggedItem}
+            setPlaceToAddItem={setPlaceToAddItem}
+          >
+            <Component/>
+          </DraggedComponent>
+        ) 
+        })
+      }
+      </TargetContainer>
     </div>
   );
 }

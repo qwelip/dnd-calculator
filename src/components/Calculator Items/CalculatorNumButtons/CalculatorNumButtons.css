@@ -12,6 +12,7 @@
   width: 30%;
   height: 50px;
   font-size: 28px;
+  cursor: grab;
 }
 
 .calculator-num-buttons__btn_zero {

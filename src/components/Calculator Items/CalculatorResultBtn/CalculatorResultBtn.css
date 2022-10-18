@@ -1,0 +1,12 @@
+.calculator-result-btn {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.calculator-result-btn__btn {
+  width: 100%;
+  height: 50px;
+  font-size: 28px;
+}

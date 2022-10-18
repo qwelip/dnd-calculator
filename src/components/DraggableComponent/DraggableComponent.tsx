@@ -5,7 +5,7 @@ interface IProps {
   children: React.ReactNode
   id: number
   draggedItems: number[] 
-  getIdOfDraggingItem: (id: number) => void
+  getIdOfDraggingItem: (id: number | null) => void
 }
 
 const DraggableComponent: React.FC<IProps> = ({children, id, draggedItems, getIdOfDraggingItem}) => {
@@ -14,6 +14,10 @@ const DraggableComponent: React.FC<IProps> = ({children, id, draggedItems, getId
   
   const handleDragStart = () => {
     getIdOfDraggingItem(id)
+  }
+
+  const handleDragEnd = () => {
+    getIdOfDraggingItem(null)
   }
   
   const componentStyle = {
@@ -27,6 +31,7 @@ const DraggableComponent: React.FC<IProps> = ({children, id, draggedItems, getId
         style={componentStyle}
         draggable={isItemDragged ? false : true}  
         onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
       >
         {
           isItemDragged &&

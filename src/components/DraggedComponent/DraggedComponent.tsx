@@ -4,16 +4,18 @@ import './DraggedComponent.css'
 interface IProps {
   children: React.ReactNode
   id: number
+  idOfDraggingItem: number
   onDelete: (id: number) => void
   setPlaceToAddItem: (id: number, top: boolean) => void
 }
 
-const DraggedComponent:React.FC<IProps> = ({children, id, onDelete, setPlaceToAddItem}) => {
+const DraggedComponent:React.FC<IProps> = ({children, id, idOfDraggingItem, onDelete, setPlaceToAddItem}) => {
   const divRef = useRef<HTMLDivElement>(null)
   const [componentOffsetTop, setComponentOffsetTop] = useState(0)
   const [componentHeight, setComponentHeight] = useState(0)
   const [isTop, setIsTops] = useState<boolean>()
   const [isMarkerShow, setIsMarkerShow] = useState(false)
+  const [isDropAreaShow, setIsDropAreaShow] = useState(false)
 
   const deleteItem = () => {
     onDelete(id)
@@ -23,7 +25,8 @@ const DraggedComponent:React.FC<IProps> = ({children, id, onDelete, setPlaceToAd
     setIsMarkerShow(false)
   }
 
-  const handleDragEnter = () => {
+  const handleDragEnter: React.DragEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation()
     setIsMarkerShow(true)
   }
 
@@ -57,24 +60,43 @@ const DraggedComponent:React.FC<IProps> = ({children, id, onDelete, setPlaceToAd
     opacity: isMarkerShow ? '100%' : '0%'
   }
 
+  useEffect(() => {
+    if (!idOfDraggingItem) {
+      setIsDropAreaShow(false)
+    }
+    else if (idOfDraggingItem !== id) {
+      setIsDropAreaShow(true)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idOfDraggingItem])
+
   return (
     <div 
       ref={divRef}
       className='dragged-component'
-      onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDragEnter={handleDragEnter}
       onDrop={handleDrop}
-    >
+      >
+      {
+        isDropAreaShow &&
+        <div 
+        onDragOver={handleDragOver}
+          className="dragged-component__drop-area"
+        >
+        </div>
+      }
       <div 
         className='drag-marker'
         style={markerStyles}
       ></div>
       <button 
-        className='dragged-component__btn'
+        className='dragged-component__delete-btn'
         onClick={deleteItem}
       ></button>
-      {children}
+      <div className="dragged-component__children">
+        {children}
+      </div>
     </div>
   );
 };

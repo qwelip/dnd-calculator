@@ -12,13 +12,13 @@ interface INewItem {
 }
 
 export function App() {
-  const [idOfDraggingItem, setIdOfDraggingItem] = useState<number>()
+  const [idOfDraggingItem, setIdOfDraggingItem] = useState<number | null>()
   const [draggedItems, setDraggedItems] = useState<number[]>([] as number[])
   const [whereToAddNewItem, setWhereToAddNewItem] = useState<INewItem>()
 
   const isItemDouble = draggedItems.includes(idOfDraggingItem!)
 
-  const getIdOfDraggingItem = (id: number): void => {
+  const getIdOfDraggingItem = (id: number | null): void => {
     setIdOfDraggingItem(id)
   }
   const addDraggedItemToItem = (id: number) => {
@@ -98,6 +98,7 @@ export function App() {
           <DraggedComponent 
             key={randomKey}
             id={id}
+            idOfDraggingItem={idOfDraggingItem!}
             onDelete={deleteDraggedItem}
             setPlaceToAddItem={setPlaceToAddItem}
           >

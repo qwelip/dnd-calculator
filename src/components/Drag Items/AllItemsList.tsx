@@ -1,6 +1,7 @@
-import ItemBlue from "./ItemBlue";
-import ItemCrimson from "./ItemCrimson";
-import ItemDarkseagreen from "./ItemDarkseagreen";
+import CalculatorActions from "../Calculator Items/CalculatorActions/CalculatorActions";
+import CalculatorDisplay from "../Calculator Items/CalculatorDisplay/CalculatorDisplay";
+import CalculatorNumButtons from "../Calculator Items/CalculatorNumButtons/CalculatorNumButtons";
+import CalculatorResultBtn from "../Calculator Items/CalculatorResultBtn/CalculatorResultBtn";
 
 type colors = 'crimson' | 'darkseagreen' | 'blue'
 
@@ -13,17 +14,22 @@ export interface IItem {
 export const allItems: IItem[] = [
   {
     id: 1,
-    component: ItemCrimson,
+    component: CalculatorActions,
     bgColor: 'crimson',
   },
   {
     id: 2,
-    component: ItemDarkseagreen,
+    component: CalculatorDisplay,
     bgColor: 'darkseagreen',
   },
   {
     id: 3,
-    component: ItemBlue,
+    component: CalculatorNumButtons,
     bgColor: 'blue',
-  }
+  },
+  {
+    id: 4,
+    component: CalculatorResultBtn,
+    bgColor: 'blue',
+  },
 ]

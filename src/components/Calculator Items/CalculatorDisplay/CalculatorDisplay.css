@@ -1,0 +1,20 @@
+.calculator-display {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px;
+  border: solid 1px rgb(95, 95, 95);
+  gap: 5px;
+}
+
+.calculator-display__input {
+  height: 50px;
+  width: 100%;
+  border: solid 1px rgba(255, 255, 255, 0.384);
+  font-size: 34px;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+}

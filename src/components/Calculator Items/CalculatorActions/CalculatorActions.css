@@ -20,6 +20,10 @@
   cursor: grab;
 }
 
+.target-container .calculator-actions__button {
+  cursor: pointer;
+}
+
 .calculator-actions__button_multiply {
   padding-top: 12px;
 }

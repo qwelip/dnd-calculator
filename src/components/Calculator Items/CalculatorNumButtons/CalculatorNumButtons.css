@@ -15,6 +15,10 @@
   cursor: grab;
 }
 
+.target-container .calculator-num-buttons__btn {
+  cursor: pointer;
+}
+
 .calculator-num-buttons__btn_zero {
   
 }

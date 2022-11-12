@@ -24,6 +24,10 @@ const DraggableComponent: React.FC<IProps> = ({children, id, draggedItems, getId
     cursor: isItemDragged ? 'not-allowed' : 'grab',
   } 
 
+  const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation()
+  }
+
   return (
     <>
       <div 
@@ -32,6 +36,7 @@ const DraggableComponent: React.FC<IProps> = ({children, id, draggedItems, getId
         draggable={isItemDragged ? false : true}  
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
+        onClickCapture={handleClick}
       >
         {
           isItemDragged &&

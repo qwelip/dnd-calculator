@@ -6,10 +6,10 @@ const CalculatorNumButtons = () => {
   const {state, dispatch} = React.useContext(CalculatorContext) as IContextItems
 
   const handleClickAddNumber: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    const button = e.target as HTMLButtonElement
     if (state.isResult && !state.operationKind) {
       return
     }
-    const button = e.target as HTMLButtonElement
     dispatch({type: 'SET_DISPLAY_OUTPUT', payload: button.innerHTML})
     dispatch({type: 'SET_NUMBER', payload: button.innerHTML})
   }

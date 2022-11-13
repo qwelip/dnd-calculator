@@ -12,6 +12,7 @@ export type dispatchTypes =
 | 'SET_OPERATION'
 | 'RESET'
 | 'PROCESS_RESULT'
+| 'SET_IS_ALL_ITEMS'
 
 type operations = 
 | 'summation'
@@ -22,7 +23,7 @@ type operations =
 
 interface IDispatchArgs {
   type: dispatchTypes
-  payload?: string | number
+  payload?: string | number | boolean
 }
 
 export interface IContextItems {
@@ -35,8 +36,8 @@ export interface IInitialState {
   firstNumber: string,
   secondNumber: string,
   operationKind: operations,
-  isAllPartsDragged: boolean,
   isResult: boolean,
+  isAllItemsDragged: boolean
 }
 
 const initialState: IInitialState = {
@@ -44,11 +45,11 @@ const initialState: IInitialState = {
   firstNumber: '',
   secondNumber: '',
   operationKind: undefined,
-  isAllPartsDragged: false,
   isResult: false,
+  isAllItemsDragged: false,
 }
 
-const reducer = (state: IInitialState, {type, payload}: {type: dispatchTypes, payload: string | number}): IInitialState => {
+const reducer = (state: IInitialState, {type, payload}: {type: dispatchTypes, payload: string | number | boolean | undefined}): IInitialState => {
   switch(type) {
     case 'SET_DISPLAY_OUTPUT': 
       const payloadNoZero = state.displayOutput.length === 0 && payload === '0' ? '' : payload
@@ -86,6 +87,11 @@ const reducer = (state: IInitialState, {type, payload}: {type: dispatchTypes, pa
         firstNumber: String(payload),
         secondNumber: '',
         isResult: true,
+      }
+    case 'SET_IS_ALL_ITEMS': 
+      return {
+        ...state,
+        isAllItemsDragged: payload as boolean
       }
     default:
       return state

@@ -10,6 +10,10 @@ const CalculatorActions = () => {
       return
     }
 
+    if (!state.isAllItemsDragged) {
+      return
+    }
+
     const action = event.target as HTMLButtonElement
     switch(action.innerHTML) {
       case '+': {

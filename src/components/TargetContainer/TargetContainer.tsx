@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CalculatorContext, IContextItems } from '../CalculatorContext/CalculatorContextProvider'
 import './TargetContainer.css'
 
 interface IProps {
@@ -8,6 +9,9 @@ interface IProps {
 }
 
 const TargetContainer: React.FC<IProps> = ({idOfDraggingItem, addDraggedItemToContainer, children}) => {
+
+  const { state } = useContext(CalculatorContext) as IContextItems
+
   const handleDragOver: React.DragEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
   }
@@ -18,7 +22,7 @@ const TargetContainer: React.FC<IProps> = ({idOfDraggingItem, addDraggedItemToCo
 
   return (
     <div 
-      className='target-container'
+      className={state.isAllItemsDragged ? 'target-container target-container_all' : 'target-container target-container_not-all'}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >

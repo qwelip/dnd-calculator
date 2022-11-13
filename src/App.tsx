@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css'
+import { CalculatorContext, IContextItems } from './components/CalculatorContext/CalculatorContextProvider';
 import { allItems } from './components/Drag Items/AllItemsList';
 import DraggableComponent from './components/DraggableComponent/DraggableComponent';
 import DraggedComponent from './components/DraggedComponent/DraggedComponent';
@@ -15,6 +16,8 @@ export function App() {
   const [idOfDraggingItem, setIdOfDraggingItem] = useState<number | null>()
   const [draggedItems, setDraggedItems] = useState<number[]>([] as number[])
   const [whereToAddNewItem, setWhereToAddNewItem] = useState<INewItem>()
+
+  const { dispatch } = useContext(CalculatorContext) as IContextItems
 
   const isItemDouble = draggedItems.includes(idOfDraggingItem!)
 
@@ -50,6 +53,8 @@ export function App() {
       const arr = [...prev].filter(num => num !== id)
       return arr
     })
+    dispatch({type: 'SET_IS_ALL_ITEMS', payload: false})
+    dispatch({type: 'RESET'})
   }
   const setPlaceToAddItem = (id: number, top: boolean) => {
     setWhereToAddNewItem({dragOverId: id, top})
@@ -61,6 +66,13 @@ export function App() {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [whereToAddNewItem])
+
+  useEffect(() => {
+    if (draggedItems.length === allItems.length) {
+      dispatch({type: 'SET_IS_ALL_ITEMS', payload: true})
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draggedItems])
 
   return (
     <div 

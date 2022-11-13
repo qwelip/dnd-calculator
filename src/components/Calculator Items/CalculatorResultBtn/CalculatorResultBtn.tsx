@@ -14,6 +14,10 @@ const CalculatorResultBtn = () => {
       return
     }
 
+    if (!state.isAllItemsDragged) {
+      return
+    }
+
     switch(operation) {
       case 'summation': {
         const res = num1 + num2

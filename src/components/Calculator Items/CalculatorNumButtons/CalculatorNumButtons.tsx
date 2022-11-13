@@ -10,6 +10,9 @@ const CalculatorNumButtons = () => {
     if (state.isResult && !state.operationKind) {
       return
     }
+    if (!state.isAllItemsDragged) {
+      return
+    }
     dispatch({type: 'SET_DISPLAY_OUTPUT', payload: button.innerHTML})
     dispatch({type: 'SET_NUMBER', payload: button.innerHTML})
   }

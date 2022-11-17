@@ -53,10 +53,10 @@ const DraggedComponent:React.FC<IProps> = ({children, id, idOfDraggingItem, onDe
 
   const markerStyles = {
     top: isTop ? 0 : componentHeight,
-    left: -50,
+    left: -60,
     width: '10%',
     height: 5,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     opacity: isMarkerShow ? '100%' : '0%'
   }
 

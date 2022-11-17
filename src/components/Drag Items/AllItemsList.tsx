@@ -14,13 +14,13 @@ export interface IItem {
 export const allItems: IItem[] = [
   {
     id: 1,
-    component: CalculatorActions,
-    bgColor: 'crimson',
+    component: CalculatorDisplay,
+    bgColor: 'darkseagreen',
   },
   {
     id: 2,
-    component: CalculatorDisplay,
-    bgColor: 'darkseagreen',
+    component: CalculatorActions,
+    bgColor: 'crimson',
   },
   {
     id: 3,

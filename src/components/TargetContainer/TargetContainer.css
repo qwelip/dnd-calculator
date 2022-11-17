@@ -1,15 +1,18 @@
 .target-container {
-  padding: 8px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex-basis: 300px;
+  flex-basis: 320px;
+  background: #222531;
+  box-shadow: 3px 2px 20px 8px rgba(0, 0, 0, 0.32);
+  border-radius: 4px;
 }
 
 .target-container_all {
-  border: solid 4px rgb(187, 255, 211);
+  border: solid 4px #16C784;
 }
 
 .target-container_not-all {
-  border: solid 4px rgb(255, 194, 187);
+  border: solid 4px #EA3943;
 }

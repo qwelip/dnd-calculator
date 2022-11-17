@@ -5,18 +5,29 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 10px;
-  border: solid 1px rgb(95, 95, 95);
+  background: #17171A;
+  border-radius: 8px;
   gap: 5px;
 }
 
+.dragged-component__children .calculator-display {
+  cursor: pointer;
+}
+
 .calculator-display__input {
-  height: 50px;
+  overflow: hidden;
+  height: 66px;
   width: 100%;
-  border: solid 1px rgba(255, 255, 255, 0.384);
   font-size: 34px;
-  padding: 2px 4px;
   display: flex;
   align-items: center;
   cursor: grab;
   justify-content: end;
+  color: white;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.dragged-component__children .calculator-display__input {
+  cursor: pointer;
 }

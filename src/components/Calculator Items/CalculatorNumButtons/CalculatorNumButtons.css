@@ -10,15 +10,16 @@
 
 .calculator-num-buttons__btn {
   width: 30%;
-  height: 50px;
+  height: 46px;
   font-size: 28px;
   cursor: grab;
+  background: #323546;
+  border: 1px solid #3B3F54;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
 }
 
-.target-container .calculator-num-buttons__btn {
-  cursor: pointer;
-}
-
-.calculator-num-buttons__btn_zero {
-  
+.calculator-num-buttons__btn_c {
+  background: #EA3943;
 }

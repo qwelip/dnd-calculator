@@ -10,6 +10,8 @@
   height: 50px;
   font-size: 28px;
   cursor: grab;
+  background: #16C784;
+  border-radius: 12px;
 }
 
 .target-container .calculator-result-btn__btn {

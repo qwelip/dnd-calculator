@@ -51,10 +51,10 @@ const CalculatorNumButtons = () => {
       <button className='calculator-num-buttons__btn'
         onClick={handleClickAddNumber}      
       >9</button>
-      <button className='calculator-num-buttons__btn calculator-num-buttons__btn_zero'
+      <button className='calculator-num-buttons__btn'
         onClick={handleClickAddNumber}
       >0</button>
-      <button className='calculator-num-buttons__btn'
+      <button className='calculator-num-buttons__btn calculator-num-buttons__btn_c'
         onClick={handleClickReset}
       >C</button>
     </div>

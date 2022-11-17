@@ -38,38 +38,28 @@ const CalculatorActions = () => {
     }
   }
 
-  const stylesActiveBtn = (type: string) => {
-    return {
-      background: state.operationKind?.includes(type) ? '#0000003b' : 'white',
-    }
-  }
-
   return (
     <div className='calculator-actions'>
       <button
-        className='calculator-actions__button'
-        style={stylesActiveBtn('summation')}
+        className={`calculator-actions__button ${ state.operationKind?.includes('summation') ? 'calculator-actions__button_active' : 'calculator-actions__button_inactive' }`}
         onClick={handleClick}
       >
         +
       </button>
       <button
-        className='calculator-actions__button'
-        style={stylesActiveBtn('subtraction')}
+        className={`calculator-actions__button ${ state.operationKind?.includes('subtraction') ? 'calculator-actions__button_active' : 'calculator-actions__button_inactive' }`}
         onClick={handleClick}
       >
         -
       </button>
       <button
-        className='calculator-actions__button calculator-actions__button_multiply'
-        style={stylesActiveBtn('multiplication')}
+        className={`calculator-actions__button calculator-actions__button_multiply ${ state.operationKind?.includes('multiplication') ? 'calculator-actions__button_active' : 'calculator-actions__button_inactive' }`}
         onClick={handleClick}
       >
         *
       </button>
       <button
-        className='calculator-actions__button'
-        style={stylesActiveBtn('divide')}
+        className={`calculator-actions__button ${ state.operationKind?.includes('divide') ? 'calculator-actions__button_active' : 'calculator-actions__button_inactive' }`}
         onClick={handleClick}
       >
         /

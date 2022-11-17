@@ -75,51 +75,52 @@ export function App() {
   }, [draggedItems])
 
   return (
-    <div 
-      className="app"
-    >
-      <InitialContainer>
-        {
-          allItems.map(item => {
-            const Component = item.component
-            return (
-              <DraggableComponent 
-                key={item.id} 
-                id={item.id}
-                getIdOfDraggingItem={getIdOfDraggingItem}
-                draggedItems={draggedItems}
-              >
-                <Component/>
-              </DraggableComponent>
-            )
+    <div className="app">
+      <h1 className='title'>Собери калькулятор!</h1>
+      <div className="container">
+        <InitialContainer>
+          {
+            allItems.map(item => {
+              const Component = item.component
+              return (
+                <DraggableComponent 
+                  key={item.id} 
+                  id={item.id}
+                  getIdOfDraggingItem={getIdOfDraggingItem}
+                  draggedItems={draggedItems}
+                >
+                  <Component/>
+                </DraggableComponent>
+              )
+            })
+          }
+        </InitialContainer>
+
+        <TargetContainer
+          idOfDraggingItem={idOfDraggingItem!}
+          addDraggedItemToContainer={addDraggedItemToContainer}
+        >
+        {  
+          draggedItems.map((id) => {
+          const item = allItems.find(item => item.id === id)
+          const Component = item!.component
+          const randomKey = Math.random()
+
+          return (
+            <DraggedComponent 
+              key={randomKey}
+              id={id}
+              idOfDraggingItem={idOfDraggingItem!}
+              onDelete={deleteDraggedItem}
+              setPlaceToAddItem={setPlaceToAddItem}
+            >
+              <Component/>
+            </DraggedComponent>
+          ) 
           })
         }
-      </InitialContainer>
-
-      <TargetContainer
-        idOfDraggingItem={idOfDraggingItem!}
-        addDraggedItemToContainer={addDraggedItemToContainer}
-      >
-      {  
-        draggedItems.map((id) => {
-        const item = allItems.find(item => item.id === id)
-        const Component = item!.component
-        const randomKey = Math.random()
-
-        return (
-          <DraggedComponent 
-            key={randomKey}
-            id={id}
-            idOfDraggingItem={idOfDraggingItem!}
-            onDelete={deleteDraggedItem}
-            setPlaceToAddItem={setPlaceToAddItem}
-          >
-            <Component/>
-          </DraggedComponent>
-        ) 
-        })
-      }
-      </TargetContainer>
+        </TargetContainer>
+      </div>
     </div>
   );
 }

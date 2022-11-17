@@ -9,8 +9,6 @@
 }
 
 .calculator-actions__button {
-  border: solid 1px black;
-  background-color: white;
   width: 20%;
   height: 50px;
   text-align: center;
@@ -18,6 +16,24 @@
   font-size: 28px;
   padding: 0;
   cursor: grab;
+  background: #323546;
+  border: 1px solid #3B3F54;
+  border-radius: 12px;
+  color: white;
+  width: 58px;
+  height: 48px;
+}
+
+.calculator-actions__button_active {
+  background-color: #0000003b;
+}
+
+.calculator-actions__button_inactive {
+  /* background-color: white; */
+}
+
+.initial-container .calculator-actions__button {
+  /* background-color: white; */
 }
 
 .target-container .calculator-actions__button {

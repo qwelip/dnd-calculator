@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.629c8439.css",
-    "main.js": "/static/js/main.f5fac494.js",
-    "index.html": "/index.html",
-    "main.629c8439.css.map": "/static/css/main.629c8439.css.map",
-    "main.f5fac494.js.map": "/static/js/main.f5fac494.js.map"
+    "main.css": "/dnd-calculator/static/css/main.629c8439.css",
+    "main.js": "/dnd-calculator/static/js/main.f5fac494.js",
+    "index.html": "/dnd-calculator/index.html",
+    "main.629c8439.css.map": "/dnd-calculator/static/css/main.629c8439.css.map",
+    "main.f5fac494.js.map": "/dnd-calculator/static/js/main.f5fac494.js.map"
   },
   "entrypoints": [
     "static/css/main.629c8439.css",
